@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Route::get('/', fn() => view('customer.customer_home'));
 
+Route::prefix('admin')->group(function() {
+    Auth::routes();
+    Route::group(['middleware' => 'auth', 'name' => 'admin.'], function() {
+        Route::get('/', [AdminController::class, 'index'])->name('home');
+    });
+    // Route::middleware('auth')->group(function() {
 
-Route::middleware('auth')->group(function () {
-
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //     // Route::get('/', [HomeController::class, 'index'])->name('home');
+    // });
 });
+
+
+
 
