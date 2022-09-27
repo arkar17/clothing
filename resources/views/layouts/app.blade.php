@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,83 +15,103 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Font Awesome -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
-rel="stylesheet"
-/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss'])
 </head>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div class="bg-white py-3 shadow-sm rounded-0">
+            <div class="d-flex justify-content-between">
+                <div class="col-md-3 text-md-center p-md-0 ps-5">
+                    <a href="#offcanvasWithBothOptions" class="text-dark" data-bs-toggle="offcanvas" role="button"
+                            aria-controls="offcanvasExample">
+                            <i class="fa-solid fa-bars fa-lg"></i>
+                        </a>
+                    {{-- @if (request()->is('/admin/'))
+                        <a href="#offcanvasWithBothOptions" class="text-dark" data-bs-toggle="offcanvas" role="button"
+                            aria-controls="offcanvasExample">
+                            <i class="fa-solid fa-bars fa-lg"></i>
+                        </a>
+                    @else
+                        <a href="" class="text-dark previousLink"> <i class="fa-solid fa-arrow-left-long"></i>
+                        </a>
+                    @endif --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5 class="mb-0"> @yield('title') </h5>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                aria-labelledby="offcanvasWithBothOptionsLabel" style="width: 300px;">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Ginger Shop</h5>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="w-100 mb-2">
+                        <a href=""
+                            class="btn btn-light w-100 text-start text-decoration-none">
+                            <i class="fas fa-users me-3"></i>
+                            <span class="sidebar-link">Hello</span>
+                        </a>
+                    </div>
+                    <div class="w-100">
+                        <a href=""
+                            class="btn btn-light w-100 text-start text-decoration-none">
+                            <i class="fas fa-users me-3"></i>
+                            <span class="sidebar-link">Hello</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
+        <div class="py-4">
+            <div class="col-md-10 mx-auto">
+                @yield('content')
+            </div>
+        </div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="bottom-bar d-flex justify-content-around bg-white shadow-lg position-fixed bottom-0 w-100 py-3">
+            <a href="" class="text-dark">
+                <i class="fa fa-home fa-lg"></i>
+            </a>
+            <a href="" class="text-dark">
+                <i class="fa fa-home fa-lg"></i>
+            </a>
+            <a href="" class="text-dark">
+                <i class="fa fa-home fa-lg"></i>
+            </a>
+            <a href="" class="text-dark">
+                <i class="fa fa-home fa-lg"></i>
+            </a>
+        </div>
+
+        <div class="my-5"></div>
+    </div>
+
+
+
+
+        <!-- MDB -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
     </div>
 </body>
+
 </html>
