@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('size');
             $table->integer('price')->default(0);
             $table->integer('discount_price')->default(0);
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
             $table->string('color');
             $table->string('photos')->nullable();
             $table->boolean('favourite_status')->default(0);

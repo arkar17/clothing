@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,12 @@ Route::prefix('admin')->group(function() {
     //     // Route::get('/', [HomeController::class, 'index'])->name('home');
     // });
 });
+
+// Admin-Category
+Route::resource('category', CategoryController::class);
+Route::get('/category/delete/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
+Route::get('/edit/category။{id}',[CategoryController::class,'edit']);
+
 
 
 

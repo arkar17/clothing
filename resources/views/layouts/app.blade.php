@@ -71,6 +71,13 @@
                             <span class="sidebar-link">Hello</span>
                         </a>
                     </div>
+                    <div class="w-100">
+                        <a href="{{route('category.index')}}"
+                            class="btn btn-light w-100 text-start text-decoration-none">
+                            <i class="fas fa-users me-3"></i>
+                            <span class="sidebar-link">Category</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

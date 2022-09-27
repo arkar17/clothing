@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('town');
             $table->string('township');
             $table->string('address');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
             $table->bigInteger('total_price')->default(0);
             $table->integer('tax')->default(0);
             $table->integer('order_status')->default(0);
