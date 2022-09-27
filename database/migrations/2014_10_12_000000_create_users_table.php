@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('town')->nullable();
             $table->string('township')->nullable();
             $table->string('address')->nullable();
+            $table->integer('user_status')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
