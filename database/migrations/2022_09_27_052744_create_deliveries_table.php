@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
-            $table->integer('deli_place_id');
+            $table->integer('deliplace_id');
             $table->string('delivery_name');
             $table->date('estimate_date');
             $table->timestamps();
