@@ -11,12 +11,12 @@ class Delivery extends Model
 
     public function order()
     {
-        return $this->hasOne(Order::class,'order_id');
+        return $this->hasOne(Order::class,'id','order_id');
     }
 
     public function deliplace()
     {
-        return $this->hasOne(DeliPlace::class,'deliplace_id');
+        return $this->hasOne(DeliPlace::class,'id','deliplace_id');
     }
-    
+
 }

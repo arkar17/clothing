@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -14,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category_show=Category::all();
-        return view('admin.category.index',compact('category_show'));
+        $category_index=Category::all();
+        return view('admin.category.index',compact('category_index'));
     }
 
     /**
@@ -67,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
+        $category_edit = Category::findOrFail($id);
+        return view('admin.category.edit',compact('category_edit'));
     }
 
     /**
@@ -79,7 +81,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category_update = Category::findOrFail($id);
+        $category_update->name = $request->category_name;
+
+        $category_update->update();
+
+        $category_index=Category::all();
+        return view('admin.category.index',compact('category_index'))->with('success','Category is updated successfully');
     }
 
     /**

@@ -15,20 +15,22 @@ return new class extends Migration
     {
         Schema::create('cloths', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->integer('category_id');
-            $table->string('cloth_name');
-            $table->string('cloth_type');
-            $table->string('size');
+            $table->string('cloth_name')->nullable();
+            $table->string('cloth_type')->nullable();
+            $table->string('size')->nullable();
             $table->integer('price')->default(0);
-            $table->integer('discount_price')->default(0);
+            $table->integer('discount_price')->nullable()->default(0);
             $table->integer('quantity')->default(0);
-            $table->string('color');
+            $table->string('color')->nullable();
             $table->string('photos')->nullable();
-            $table->boolean('favourite_status')->default(0);
+            $table->boolean('favourite_status')->nullable()->default(0);
             $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            // wishlist
         });
     }
 

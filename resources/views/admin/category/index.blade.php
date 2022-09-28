@@ -15,7 +15,7 @@
                     <button type="button" class="btn-close" aria-label="Close" id="close-btn"></button>&nbsp;&nbsp;{{ session('success') }}
                 </div>
             @endif
-            <a href="{{route('category.create')}}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">{{__('Create')}}</a>
+            <a href="{{route('category.create')}}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;{{__('Create')}}</a>
             <table id="dataTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -26,14 +26,15 @@
                 </thead>
                 <tbody>
                     <?php $i=1; ?>
-                    @foreach ($category_show as $category)
+                    @foreach ($category_index as $category)
                     <tr>
                         <td>{{$i++}}</td>
                         <td>{{$category->name}}</td>
                         <td>
-                            <a href="" title="Edit" data-bs-toggle="modal" id="editcategory" name="category_id " value="{{$category->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="{{route('category.destroy',$category->id)}}" title="Delete" onclick="return confirm('Are you sure you want to delete this ?')">
-                                <i class="fa-solid fa-trash"></i>
+                            <a href="{{route('category.edit',$category->id)}}" title="Edit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            {{-- <a href="{{route('category.edit',$category->id)}}" title="Edit" data-bs-toggle="modal" id="editcategory" name="category_id "><i class="fa-solid fa-pen-to-square"></i></a> --}}
+                            <a href="{{route('category.destroy',$category->id)}}" title="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this ?')">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>
                     </tr>

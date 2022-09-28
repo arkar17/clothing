@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ClothController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Models\Cloth;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,10 @@ Route::prefix('admin')->group(function() {
 // Admin-Category
 Route::resource('category', CategoryController::class);
 Route::get('/category/delete/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
-Route::get('/edit/category။{id}',[CategoryController::class,'edit']);
+
+// Admin-Cloth
+Route::resource('cloth',ClothController::class);
+Route::get('/cloth/delete/{id}',[ClothController::class,'destroy'])->name('cloth.destroy');
 
 
 

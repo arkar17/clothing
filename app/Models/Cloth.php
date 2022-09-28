@@ -12,7 +12,7 @@ class Cloth extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class, 'category_id', 'id');
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
     public function order()

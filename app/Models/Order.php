@@ -21,11 +21,11 @@ class Order extends Model
 
     public function delivery()
     {
-        return $this->belongsTo(Delivery::class,'delivery_id');
+        return $this->belongsTo(Delivery::class,'id','delivery_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class,'id','user_id');
     }
 }
