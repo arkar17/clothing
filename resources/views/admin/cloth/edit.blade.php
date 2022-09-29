@@ -21,7 +21,7 @@
                 <input type="hidden" value="{{$cloth_edit->user_id}}" name="user_id">
                 <div class="mb-3">
                     <label for="cloth_name" class="form-label">Cloth Name</label>
-                    <input type="name" class="form-control @error('cloth_name') is-invalid @enderror" id="cloth_name" name="cloth_name" value="{{$cloth_edit->cloth_name}}">
+                    <input type="text" class="form-control @error('cloth_name') is-invalid @enderror" id="cloth_name" name="cloth_name" value="{{$cloth_edit->cloth_name}}">
                     @error('cloth_name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -40,47 +40,47 @@
                 </div>
                 <div class="mb-3">
                     <label for="cloth_type" class="form-label">Cloth Type</label>
-                    <input type="name" class="form-control @error('cloth_type') is-invalid @enderror" id="cloth_type" name="cloth_type" value="{{$cloth_edit->cloth_type}}">
+                    <input type="text" class="form-control @error('cloth_type') is-invalid @enderror" id="cloth_type" name="cloth_type" value="{{$cloth_edit->cloth_type}}">
                     @error('cloth_type')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="size" class="form-label">Size : </label>
-                    @foreach(json_decode($cloth_edit->size, true) as $size)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="XXS" name="size[]" value="XXS"  @checked($cloth_edit->size == 'XXS')/>
-                        <label class="form-check-label" for="XXS">XXS</label>
-                    </div>
-                    @endforeach
 
+                    @foreach ($cloth_edit_size as $s)
+
+                    <input class="form-check-input" type="checkbox" id="{{$s}}" name="size[]" value="{{$s}}" checked/>
+                    <label class="form-check-label" for="{{$s}}">{{$s}}</label>
+                    @endforeach
+                    <hr style="width:50%">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="XS" name="size[]" value="XS"/>
+                        <input class="form-check-input" type="checkbox" id="XS" name="size[]" value="XS"  />
                         <label class="form-check-label" for="XS">XS</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="S" name="size[]" value="S"/>
+                        <input class="form-check-input" type="checkbox" id="S" name="size[]" value="S" />
                         <label class="form-check-label" for="S">S</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="M" name="size[]" value="M"/>
+                        <input class="form-check-input" type="checkbox" id="M" name="size[]" value="M" />
                         <label class="form-check-label" for="M">M</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="L" name="size[]" value="L"/>
+                        <input class="form-check-input" type="checkbox" id="L" name="size[]" value="L" />
                         <label class="form-check-label" for="L">L</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="XL" name="size[]" value="XL"/>
+                        <input class="form-check-input" type="checkbox" id="XL" name="size[]" value="XL" />
                         <label class="form-check-label" for="XL">XL</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="XXL" name="size[]" value="XXL"/>
+                        <input class="form-check-input" type="checkbox" id="XXL" name="size[]" value="XXL" />
                         <label class="form-check-label" for="XXL">XXL</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="free" name="size[]" value="FREE"/>
-                        <label class="form-check-label" for="free">Free</label>
+                        <input class="form-check-input" type="checkbox" id="FREE" name="size[]" value="FREE" />
+                        <label class="form-check-label" for="FREE">FREE</label>
                     </div>
 
                     @error('size')
@@ -89,28 +89,67 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="name" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{$cloth_edit->price}}">
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{$cloth_edit->price}}">
                     @error('price')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="discount_price" class="form-label">Discount Price</label>
-                    <input type="name" class="form-control @error('discount_price') is-invalid @enderror" id="discount_price" name="discount_price" value="{{$cloth_edit->discount_price}}">
+                    <input type="number" class="form-control @error('discount_price') is-invalid @enderror" id="discount_price" name="discount_price" value="{{$cloth_edit->discount_price}}">
                     @error('discount_price')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
-                    <input type="name" class="form-control @error('quantity') is-invalid @enderror" id="quantity" name="quantity" value="{{$cloth_edit->quantity}}">
+                    <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity" name="quantity" value="{{$cloth_edit->quantity}}">
                     @error('quantity')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label for="color" class="form-label">Color</label>
-                    <input type="name" class="form-control @error('color') is-invalid @enderror" id="color" name="color" value="{{$cloth_edit->color}}">
+                    <label for="color" class="form-label">Color:</label>
+
+                    @foreach($cloth_edit_color as $color)
+                    <input class="form-check-input" type="checkbox" id="{{$color}}" name="color[]" value="{{$color}}" checked/>
+                    <label class="form-check-label" for="{{$color}}">{{$color}}</label>
+                    @endforeach
+                    <hr style="width:50%">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="WHITE" name="color[]" value="WHITE"/>
+                        <label class="form-check-label" for="WHITE">White</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="RED" name="color[]" value="RED"/>
+                        <label class="form-check-label" for="RED">Red</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="GREEN" name="color[]" value="GREEN"/>
+                        <label class="form-check-label" for="GREEN">Green</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="BLUE" name="color[]" value="BLUE"/>
+                        <label class="form-check-label" for="BLUE">Blue</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="YELLOW" name="color[]" value="YELLOW"/>
+                        <label class="form-check-label" for="YELLOW">Yellow</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="PURPLE" name="color[]" value="PURPLE"/>
+                        <label class="form-check-label" for="PURPLE">Purple</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="ORANGE" name="color[]" value="ORANGE"/>
+                        <label class="form-check-label" for="ORANGE">Orange</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="PINK" name="color[]" value="PINK"/>
+                        <label class="form-check-label" for="PINK">Pink</label>
+                    </div>
+                    {{-- <input type="name" class="form-control @error('color') is-invalid @enderror" id="color" name="color" value="{{$cloth_edit->color}}"> --}}
                     @error('color')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -131,12 +170,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <input type="name" class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{$cloth_edit->description}}">
+                    <textarea id="summernote" class="form-control @error('description') is-invalid @enderror" name="description" value="{{$cloth_edit->description}}">{{$cloth_edit->description}}</textarea>
+
+                    {{-- <input type="name" class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{$cloth_edit->description}}"> --}}
                     @error('description')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{url()->previous()}}" class="btn btn-secondary" >Cancel</a>
             </form>
         </div>

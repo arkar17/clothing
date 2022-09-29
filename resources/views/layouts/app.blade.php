@@ -82,7 +82,7 @@
                         <a href="{{route('cloth.index')}}"
                             class="btn btn-light w-100 text-start text-decoration-none">
                             <i class="fas fa-users me-3"></i>
-                            <span class="sidebar-link">Category</span>
+                            <span class="sidebar-link">Cloth</span>
                         </a>
                     </div>
                 </div>

@@ -3,9 +3,11 @@
 @section('title', 'Cloth')
 
 @section('content')
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -15,11 +17,11 @@
                     <button type="button" class="btn-close" aria-label="Close" id="close-btn"></button>&nbsp;&nbsp;{{ session('success') }}
                 </div>
             @endif
-
         </div>
-        <div class="col-md-12">
-            <a href="{{route('cloth.create')}}" class="btn btn-primary" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;{{__('Create')}}</a>
-            <table id="dataTable" class="table table-striped" style="width:100%">
+        <div>
+            <a href="{{route('cloth.create')}}" class="btn btn-primary" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;{{__('Create')}}</a><br><br>
+            <div class="table-responsive">
+            <table id="dataTable" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -63,6 +65,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 
@@ -76,8 +79,7 @@
     });
 
     $('#dataTable').DataTable();
-
-});
+})
 
 </script>
 

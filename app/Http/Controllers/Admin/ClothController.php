@@ -54,9 +54,13 @@ class ClothController extends Controller
         if($request->hasfile('photos')) {
             foreach($request->file('photos') as $file)
             {
-                $name = $file->getClientOriginalName();
-                $file->move(public_path().'/images/', $name);
-                $imgData[] = $name;
+                // $file = $request->file('profile_img');
+                $imgName = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path() . '/images/', $imgName);
+
+                // $imgName = $file->getClientOriginalName();
+                // $file->move(public_path().'/images/', $imgName);
+                // $imgData[] = $imgName;
             }
             $cloth_store_size= json_encode($request->size);
             $cloth_store_color=json_encode($request->color);
@@ -71,7 +75,7 @@ class ClothController extends Controller
             $cloth_store->discount_price=$request->discount_price;
             $cloth_store->quantity=$request->quantity;
             $cloth_store->color=$cloth_store_color;
-            $cloth_store->photos=json_encode($imgData);
+            $cloth_store->photos=json_encode($imgName);
             $cloth_store->favourite_status=$request->favourite_status;
             $cloth_store->description=$request->description;
 
@@ -105,8 +109,9 @@ class ClothController extends Controller
     {
         $cloth_edit = Cloth::findOrFail($id);
         $cloth_edit_size=json_decode($cloth_edit->size);
+        $cloth_edit_color=json_decode($cloth_edit->color);
         $cloth_edit_category=Category::all();
-        return view('admin.cloth.edit',compact('cloth_edit','cloth_edit_category'));
+        return view('admin.cloth.edit',compact('cloth_edit','cloth_edit_category','cloth_edit_size','cloth_edit_color'));
     }
 
     /**
@@ -129,6 +134,8 @@ class ClothController extends Controller
             'photos'=>'required'
         ]);
 
+        $cloth_update_color=json_encode($request->color);
+
         $cloth_update = Cloth::findOrFail($id);
         $cloth_update->user_id = $request->user_id;
         $cloth_update->cloth_name=$request->cloth_name;
@@ -138,7 +145,7 @@ class ClothController extends Controller
         $cloth_update->price=$request->price;
         $cloth_update->discount_price=$request->discount_price;
         $cloth_update->quantity=$request->quantity;
-        $cloth_update->color=$request->color;
+        $cloth_update->color=$cloth_update_color;
         $cloth_update->photos=$request->photos;
         $cloth_update->favourite_status=$request->favourite_status;
         $cloth_update->description=$request->description;

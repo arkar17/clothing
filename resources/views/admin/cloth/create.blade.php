@@ -183,7 +183,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="summernote" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}"></textarea>
+                    <textarea id="summernote" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}">{{ old('description') }}</textarea>
                     {{-- <input type="name" class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{ old('description') }}"> --}}
                     @error('description')
                         <span class="text-danger">{{ $message }}</span>
