@@ -1,0 +1,28 @@
+body {
+    background-color: #F0F2F5;
+}
+
+mark{background:#87BFF5 !important;color:black;}
+
+.profile-edit-icn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+
+/* Datatable */
+table.dataTable>thead>tr>th{
+    vertical-align: middle;
+    text-align: center;
+}
+table.dataTable>tbody>tr {
+    vertical-align: middle;
+    text-align: center;
+    background-color: transparent;
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.child, table.dataTable.dtr-inline.collapsed>tbody>tr>th.child, table.dataTable.dtr-inline.collapsed>tbody>tr>td.dataTables_empty {
+    text-align: left;
+    /* vertical-align: middle; */
+    cursor: default !important;
+}

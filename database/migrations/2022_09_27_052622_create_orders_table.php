@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('cloth_id');
-            $table->integer('delivery_id');
             $table->date('date');
-            $table->string('state');
-            $table->string('town');
-            $table->string('township');
+            $table->string('division');
+            $table->string('city');
             $table->string('address');
             $table->integer('quantity');
             $table->bigInteger('total_price')->default(0);

@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone')->unique();
             $table->string('email')->unique();
-            $table->string('state');
-            $table->string('town');
-            $table->string('township');
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('image')->nullable();
+            $table->string('division')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
