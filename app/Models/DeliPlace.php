@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deli_Place extends Model
+class DeliPlace extends Model
 {
     use HasFactory;
+
+    public function delivery()
+    {
+        return $this->belongsTo(Delivery::class);
+    }
 }
